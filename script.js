@@ -32,43 +32,43 @@ function secretCode() {
         }
     }
 
-    let cypher = msgArr.join('');
+    let cipher = msgArr.join('');
     console.log(userInput.toUpperCase());
-    console.log(cypher);
+    console.log(cipher);
 }
 
 function decypher() {
-    const cypheredText = prompt('Are you sure you want to know the truth?');
-    let cypherArr = [];
+    const cipheredText = prompt('Deciper:');
+    let cipherArr = [];
 
-    for (i = 0; i < cypheredText.length; i++) {
+    for (i = 0; i < cipheredText.length; i++) {
         if (i % 2 === 0) {
-            let letter = cypheredText.charAt(i).toUpperCase();
+            let letter = cipheredText.charAt(i).toUpperCase();
             let findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                cypherArr.push(' ');
+                cipherArr.push(' ');
                 i = i--;
             } else {
                 let codedIndex = (findIndex + 1) % 26;
                 let codedLetter = key[codedIndex];
-                cypherArr.push(codedLetter);
+                cipherArr.push(codedLetter);
             }
         } else {
-            letter = cypheredText.charAt(i).toUpperCase();
+            letter = cipheredText.charAt(i).toUpperCase();
             findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                cypherArr.push(' ');
+                cipherArr.push(' ');
                 i = i--;
             } else {
                 codedIndex = ((findIndex - 9) + 26) % 26;
                 codedLetter = key[codedIndex];
-                cypherArr.push(codedLetter);
+                cipherArr.push(codedLetter);
             }
         }
     }
 
-    let decypher = cypherArr.join('');
-    console.log(decypher);
+    let decipher = cipherArr.join('');
+    console.log(decipher);
 }
