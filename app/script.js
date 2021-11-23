@@ -1,6 +1,6 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-function secretCode() {
+function cipher() {
     const userInput = prompt('Want to hide something?');
     let msgArr = [];
     
@@ -37,9 +37,9 @@ function secretCode() {
     console.log(cipher);
 }
 
-function decypher() {
+function decipher() {
     const cipheredText = prompt('Deciper:');
-    let cipherArr = [];
+    let decipherArr = [];
 
     for (i = 0; i < cipheredText.length; i++) {
         if (i % 2 === 0) {
@@ -47,28 +47,28 @@ function decypher() {
             let findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                cipherArr.push(' ');
+                decipherArr.push(' ');
                 i = i--;
             } else {
                 let codedIndex = (findIndex + 1) % 26;
                 let codedLetter = key[codedIndex];
-                cipherArr.push(codedLetter);
+                decipherArr.push(codedLetter);
             }
         } else {
             letter = cipheredText.charAt(i).toUpperCase();
             findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                cipherArr.push(' ');
+                decipherArr.push(' ');
                 i = i--;
             } else {
                 codedIndex = ((findIndex - 9) + 26) % 26;
                 codedLetter = key[codedIndex];
-                cipherArr.push(codedLetter);
+                decipherArr.push(codedLetter);
             }
         }
     }
 
-    let decipher = cipherArr.join('');
+    let decipher = decipherArr.join('');
     console.log(decipher);
 }
