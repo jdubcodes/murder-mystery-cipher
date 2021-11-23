@@ -1,1 +1,50 @@
 /* Variables */
+:root {
+--main-font: 'Share Tech Mono', monospace;
+}
+
+/* Boilerplate */
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    background-color: black;
+    color: white;
+    font-family: var(--main-font);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+* {
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 38px;
+    text-shadow: 1px 1px 3px lightgray;
+}
+
+p {
+    font-size: 20px;
+}
+
+#cipherbtn {
+    font-family: var(--main-font);
+}
+
+.container {
+    text-align: center;
+}
+
+/* change size of input box */
+/* resize and style button */

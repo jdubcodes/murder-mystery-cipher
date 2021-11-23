@@ -1,7 +1,8 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let cipherText;
 
 function cipher() {
-    const userInput = prompt('Want to hide something?');
+    const userInput = document.getElementById('ciphertext').value;
     let msgArr = [];
     
     for (i = 0; i < userInput.length; i++) {
@@ -32,9 +33,9 @@ function cipher() {
         }
     }
 
-    let cipher = msgArr.join('');
+    cipherText = msgArr.join('');
     console.log(userInput.toUpperCase());
-    console.log(cipher);
+    document.getElementById('cipheroutput').innerHTML = cipherText;
 }
 
 function decipher() {
@@ -60,6 +61,7 @@ function decipher() {
 
             if (findIndex < 0) {
                 decipherArr.push(' ');
+                letter = userInput.charAt(i).toUp
                 i = i--;
             } else {
                 codedIndex = ((findIndex - 9) + 26) % 26;
@@ -72,3 +74,9 @@ function decipher() {
     let decipher = decipherArr.join('');
     console.log(decipher);
 }
+
+
+document.getElementById('cipherbtn').addEventListener('click', cipher);
+
+// **Possibly add a copy button to easily copy the text**
+// Add code for decipher portion
