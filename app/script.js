@@ -74,8 +74,3 @@ function decipher() {
 
 document.getElementById('cipherbtn').addEventListener('click', cipher);
 document.getElementById('decipherbtn').addEventListener('click', decipher);
-
-document.getElementById('cipherbtn').addEventListener("keyup", cipher);
-deciphertext.addEventListener("keyup", decipher);
-// **Possibly add a copy button to easily copy the text**
-// Add code for decipher portion

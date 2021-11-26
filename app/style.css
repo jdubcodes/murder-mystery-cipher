@@ -60,6 +60,7 @@ input[type=button] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 /* change size of input box */
