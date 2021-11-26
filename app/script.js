@@ -1,9 +1,10 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-let cipherText;
+let cipherText = '';
+let decipherText = '';
 
 function cipher() {
     const userInput = document.getElementById('ciphertext').value;
-    let msgArr = [];
+    let cipherArr = [];
     
     for (i = 0; i < userInput.length; i++) {
         if (i % 2 === 0) {
@@ -11,35 +12,33 @@ function cipher() {
             let findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                msgArr.push(' ');
+                cipherArr.push(' ');
                 i = i--;
             } else {
                 let codedIndex = ((findIndex - 1) + 26) % 26;
                 let codedLetter = key[codedIndex];
-                msgArr.push(codedLetter);
+                cipherArr.push(codedLetter);
             }
         } else {
             letter = userInput.charAt(i).toUpperCase();
             findIndex = (key.indexOf(letter));
 
             if (findIndex < 0) {
-                msgArr.push(' ');
+                cipherArr.push(' ');
                 i = i--;
             } else {
                 codedIndex = (findIndex + 9) % 26;
                 codedLetter = key[codedIndex];
-                msgArr.push(codedLetter);
+                cipherArr.push(codedLetter);
             }
         }
     }
-
-    cipherText = msgArr.join('');
-    console.log(userInput.toUpperCase());
+    cipherText = cipherArr.join('');
     document.getElementById('cipheroutput').innerHTML = cipherText;
 }
 
 function decipher() {
-    const cipheredText = prompt('Deciper:');
+    const cipheredText = document.getElementById('deciphertext').value;
     let decipherArr = [];
 
     for (i = 0; i < cipheredText.length; i++) {
@@ -61,7 +60,6 @@ function decipher() {
 
             if (findIndex < 0) {
                 decipherArr.push(' ');
-                letter = userInput.charAt(i).toUp
                 i = i--;
             } else {
                 codedIndex = ((findIndex - 9) + 26) % 26;
@@ -70,13 +68,14 @@ function decipher() {
             }
         }
     }
-
-    let decipher = decipherArr.join('');
-    console.log(decipher);
+    decipherText = decipherArr.join('');
+    document.getElementById('decipheroutput').innerHTML = decipherText;
 }
 
-
 document.getElementById('cipherbtn').addEventListener('click', cipher);
+document.getElementById('decipherbtn').addEventListener('click', decipher);
 
+document.getElementById('cipherbtn').addEventListener("keyup", cipher);
+deciphertext.addEventListener("keyup", decipher);
 // **Possibly add a copy button to easily copy the text**
 // Add code for decipher portion
