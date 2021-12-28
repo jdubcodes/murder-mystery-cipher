@@ -1,4 +1,9 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const cipherBtn = document.getElementById('cipherbtn');
+const cipherSelection = document.querySelector('.cipher-selection');
+const cipherContainer = document.querySelector('.cipher-container');
+const decipherSelection = document.querySelector('.decipher-selection');
+const decipherContainer = document.querySelector('.decipher-container');
 let cipherText = '';
 let decipherText = '';
 
@@ -34,7 +39,7 @@ function cipher() {
         }
     }
     cipherText = cipherArr.join('');
-    document.getElementById('cipheroutput').innerHTML = cipherText;
+    document.getElementById('cipher-output').innerHTML = cipherText;
 }
 
 function decipher() {
@@ -69,8 +74,55 @@ function decipher() {
         }
     }
     decipherText = decipherArr.join('');
-    document.getElementById('decipheroutput').innerHTML = decipherText;
+    document.getElementById('decipher-output').innerHTML = decipherText;
 }
 
-document.getElementById('cipherbtn').addEventListener('click', cipher);
+// function enterKey(e) {
+//     if (e.key === 'Enter') cipher();
+// }
+
+// Select if Cipher or Decipher is shown on page
+function selectCipher() {
+    if (cipherSelection.classList.contains('unselected')) {
+        cipherSelection.classList.remove('unselected');
+        cipherSelection.classList.add('selected');
+        decipherSelection.classList.remove('selected');
+        decipherSelection.classList.add('unselected');
+    }
+}
+
+function selectDecipher() {
+    if (decipherSelection.classList.contains('unselected')) {
+        decipherSelection.classList.remove('unselected');
+        decipherSelection.classList.add('selected');
+        cipherSelection.classList.remove('selected');
+        cipherSelection.classList.add('unselected');
+    }
+}
+
+// Show which cipher is selected
+function showCipher() {
+    if (cipherContainer.classList.contains('hide')) {
+        cipherContainer.classList.remove('hide');
+        decipherContainer.classList.add('hide');
+    }
+}
+
+function showDecipher() {
+    if (decipherContainer.classList.contains('hide')) {
+        decipherContainer.classList.remove('hide');
+        cipherContainer.classList.add('hide');
+    }
+}
+
+
+// Listen for clicks on buttons
+cipherBtn.addEventListener('click', cipher);
+// window.addEventListener('keydown', enterKey);
 document.getElementById('decipherbtn').addEventListener('click', decipher);
+
+// Show cipher option
+cipherSelection.addEventListener('click', selectCipher);
+cipherSelection.addEventListener('click', showCipher);
+decipherSelection.addEventListener('click', selectDecipher);
+decipherSelection.addEventListener('click', showDecipher);

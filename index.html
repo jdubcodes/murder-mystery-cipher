@@ -15,23 +15,25 @@
         <script defer src="app/script.js"></script>
     </head>
     <body>
-        <div class="container">
-            <h1>Cipher Your Message</h1>
+        <div class="selections">
+            <button class="cipher-selection selected">Cipher</button>
+            <button class="decipher-selection unselected">Decipher</button>
+        </div>
+        <div class="cipher-container">
             <form class="cipher-box">
                 <label for="cipher"></label>
                 <input type="text" id="ciphertext">
-                <input type="button" id="cipherbtn" value="Cipher">
+                <input type="button" id="cipherbtn" value="Enter">
             </form>
-            <p id="cipheroutput"></p>
+            <p id="cipher-output"></p>
         </div>
-        <div class="container">
-            <h1>Decipher Your Message</h1>
+        <div class="decipher-container hide">
             <form class="decipher-box">
                 <label for="decipher"></label>
                 <input type="text" id="deciphertext">
-                <input type="button" id="decipherbtn" value="Decipher">
+                <input type="button" id="decipherbtn" value="Enter">
             </form>
-            <p id="decipheroutput"></p>      
+            <p id="decipher-output"></p>      
         </div> 
     </body>
 </html>
