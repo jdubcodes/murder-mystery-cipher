@@ -1,12 +1,25 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-const cipherBtn = document.getElementById('cipherbtn');
+
+const cipherButton = document.querySelector('#cipher-button');
+const cipherTextBox = document.querySelector('#ciphertext');
 const cipherSelection = document.querySelector('.cipher-selection');
 const cipherContainer = document.querySelector('.cipher-container');
+
+const decipherButton = document.querySelector('#decipher-button');
+const decipherTextBox = document.querySelector('#deciphertext');
 const decipherSelection = document.querySelector('.decipher-selection');
 const decipherContainer = document.querySelector('.decipher-container');
+
 let cipherText = '';
 let decipherText = '';
 
+// Clear text box on submit
+function clearInput() {
+    cipherTextBox.value = '';
+    decipherTextBox.value = '';
+}
+
+// Runs cipher
 function cipher() {
     const userInput = document.getElementById('ciphertext').value;
     let cipherArr = [];
@@ -40,8 +53,11 @@ function cipher() {
     }
     cipherText = cipherArr.join('');
     document.getElementById('cipher-output').innerHTML = cipherText;
+    setTimeout( () => {document.querySelector('#cipher-output').innerHTML = ''}, 15000);
+    clearInput();
 }
 
+// Runs decipher
 function decipher() {
     const cipheredText = document.getElementById('deciphertext').value;
     let decipherArr = [];
@@ -75,11 +91,9 @@ function decipher() {
     }
     decipherText = decipherArr.join('');
     document.getElementById('decipher-output').innerHTML = decipherText;
+    setTimeout( () => {document.querySelector('#decipher-output').innerHTML = ''}, 15000);
+    clearInput();
 }
-
-// function enterKey(e) {
-//     if (e.key === 'Enter') cipher();
-// }
 
 // Select if Cipher or Decipher is shown on page
 function selectCipher() {
@@ -115,14 +129,23 @@ function showDecipher() {
     }
 }
 
+cipherButton.addEventListener('click', cipher);
+decipherButton.addEventListener('click', decipher);
 
-// Listen for clicks on buttons
-cipherBtn.addEventListener('click', cipher);
-// window.addEventListener('keydown', enterKey);
-document.getElementById('decipherbtn').addEventListener('click', decipher);
-
-// Show cipher option
 cipherSelection.addEventListener('click', selectCipher);
 cipherSelection.addEventListener('click', showCipher);
+
 decipherSelection.addEventListener('click', selectDecipher);
 decipherSelection.addEventListener('click', showDecipher);
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && cipherSelection.classList.contains('selected')) {
+        e.preventDefault();
+        cipher();
+    }
+
+    if (e.key === 'Enter' && decipherSelection.classList.contains('selected')) {
+        e.preventDefault();
+        decipher();
+    }
+});
