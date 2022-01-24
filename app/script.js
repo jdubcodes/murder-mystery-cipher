@@ -4,11 +4,13 @@ const cipherButton = document.querySelector('#cipher-button');
 const cipherTextBox = document.querySelector('#ciphertext');
 const cipherSelection = document.querySelector('.cipher-selection');
 const cipherContainer = document.querySelector('.cipher-container');
+const cipherOutput = document.querySelector('#cipher-output');
 
 const decipherButton = document.querySelector('#decipher-button');
 const decipherTextBox = document.querySelector('#deciphertext');
 const decipherSelection = document.querySelector('.decipher-selection');
 const decipherContainer = document.querySelector('.decipher-container');
+const decipherOutput = document.querySelector('#decipher-output');
 
 let cipherText = '';
 let decipherText = '';
@@ -129,6 +131,17 @@ function showDecipher() {
     }
 }
 
+// Click ciphered or deciphered text to copy to clipboard
+function copyToClipboard() {
+    let range = document.createRange();
+    
+    range.selectNode(cipherOutput);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+}
+
 cipherButton.addEventListener('click', cipher);
 decipherButton.addEventListener('click', decipher);
 
@@ -149,3 +162,6 @@ window.addEventListener('keydown', (e) => {
         decipher();
     }
 });
+
+cipherOutput.addEventListener('click', copyToClipboard);
+decipherOutput.addEventListener('click', copyToClipboard);
