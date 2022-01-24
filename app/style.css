@@ -33,29 +33,47 @@ h1 {
     text-shadow: 1px 1px 5px var(--darkgray);
 }
 
-p {
-    width: 80%;
-    height: 100px;
-    font-size: 22px;
-    text-align: center;
-}
 
-input {
-    margin-bottom: 20px;
-    padding: 5px;
+#cipherText,
+#decipherText {
+    padding: 3px;
+    grid-row: 2 / 3;
     font-size: 22px;
 }
 
-input[type=button] {
+#cipherText:focus,
+#decipherText:focus {
+    outline: 0;
+}
+
+#cipherButton,
+#decipherButton {
+    padding: 5px 15px;
+    grid-row: 3 / 4;
+    justify-self: center;
     background-color: var(--darkgray);
     border: 1px solid darkgray;
     font-family: var(--main-font);
+    font-size: 22px;
     text-align: center;
     color: white;
     cursor: pointer;
 }
 
-button {
+#cipherOutput,
+#decipherOutput {
+    width: 100%;
+    height: 50px;
+    grid-row: 4 / 5;
+    font-size: 22px;
+    text-align: center;
+}
+
+.selections {
+    padding-bottom: 20px;
+}
+
+.selections button {
     width: 120px;
     height: 50px;
     font-size: 22px;
@@ -63,10 +81,24 @@ button {
     cursor: pointer;
 }
 
-.selections {
-    padding-bottom: 30px;
+.cipher-container,
+.decipher-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 10px;
 }
 
+.cipher-box,
+.decipher-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Styles used in script.js to highlight selection */
 .selected {
     background-color: var(--darkgray);
     border: 1px solid darkgray;
@@ -79,15 +111,13 @@ button {
     opacity: 0.25;
 }
 
-.cipher-container,
-.decipher-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 25px 25px;
-}
-
 .hide {
     display: none;
 }
 
-/* change size of input box */
+@media only screen and (min-width: 535px) {
+    .cipher-box,
+    .decipher-box {
+        flex-direction: row;
+    }
+}

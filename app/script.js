@@ -1,16 +1,16 @@
 const key = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-const cipherButton = document.querySelector('#cipher-button');
-const cipherTextBox = document.querySelector('#ciphertext');
+const cipherButton = document.querySelector('#cipherButton');
+const cipherTextBox = document.querySelector('#cipherText');
 const cipherSelection = document.querySelector('.cipher-selection');
 const cipherContainer = document.querySelector('.cipher-container');
-const cipherOutput = document.querySelector('#cipher-output');
+const cipherOutput = document.querySelector('#cipherOutput');
 
-const decipherButton = document.querySelector('#decipher-button');
-const decipherTextBox = document.querySelector('#deciphertext');
+const decipherButton = document.querySelector('#decipherButton');
+const decipherTextBox = document.querySelector('#decipherText');
 const decipherSelection = document.querySelector('.decipher-selection');
 const decipherContainer = document.querySelector('.decipher-container');
-const decipherOutput = document.querySelector('#decipher-output');
+const decipherOutput = document.querySelector('#decipherOutput');
 
 let cipherText = '';
 let decipherText = '';
@@ -23,7 +23,7 @@ function clearInput() {
 
 // Runs cipher
 function cipher() {
-    const userInput = document.getElementById('ciphertext').value;
+    const userInput = document.getElementById('cipherText').value;
     let cipherArr = [];
     
     for (i = 0; i < userInput.length; i++) {
@@ -54,14 +54,14 @@ function cipher() {
         }
     }
     cipherText = cipherArr.join('');
-    document.getElementById('cipher-output').innerHTML = cipherText;
-    setTimeout( () => {document.querySelector('#cipher-output').innerHTML = ''}, 15000);
+    document.getElementById('cipherOutput').innerHTML = cipherText;
+    setTimeout( () => {document.querySelector('#cipherOutput').innerHTML = ''}, 15000);
     clearInput();
 }
 
 // Runs decipher
 function decipher() {
-    const cipheredText = document.getElementById('deciphertext').value;
+    const cipheredText = document.getElementById('decipherText').value;
     let decipherArr = [];
 
     for (i = 0; i < cipheredText.length; i++) {
@@ -92,8 +92,8 @@ function decipher() {
         }
     }
     decipherText = decipherArr.join('');
-    document.getElementById('decipher-output').innerHTML = decipherText;
-    setTimeout( () => {document.querySelector('#decipher-output').innerHTML = ''}, 15000);
+    document.getElementById('decipherOutput').innerHTML = decipherText;
+    setTimeout( () => {document.querySelector('#decipherOutput').innerHTML = ''}, 15000);
     clearInput();
 }
 
@@ -132,10 +132,20 @@ function showDecipher() {
 }
 
 // Click ciphered or deciphered text to copy to clipboard
-function copyToClipboard() {
+function cipherCopy() {
     let range = document.createRange();
     
     range.selectNode(cipherOutput);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+}
+
+function decipherCopy() {
+    let range = document.createRange();
+    
+    range.selectNode(decipherOutput);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
     document.execCommand('copy');
@@ -151,6 +161,9 @@ cipherSelection.addEventListener('click', showCipher);
 decipherSelection.addEventListener('click', selectDecipher);
 decipherSelection.addEventListener('click', showDecipher);
 
+cipherOutput.addEventListener('click', cipherCopy);
+decipherOutput.addEventListener('click', decipherCopy);
+
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && cipherSelection.classList.contains('selected')) {
         e.preventDefault();
@@ -162,6 +175,3 @@ window.addEventListener('keydown', (e) => {
         decipher();
     }
 });
-
-cipherOutput.addEventListener('click', copyToClipboard);
-decipherOutput.addEventListener('click', copyToClipboard);
