@@ -23,7 +23,7 @@ function clearInput() {
 
 // Runs cipher
 function cipher() {
-    const userInput = document.getElementById('cipherText').value;
+    const userInput = cipherTextBox.value;
     let cipherArr = [];
     
     for (i = 0; i < userInput.length; i++) {
@@ -54,14 +54,14 @@ function cipher() {
         }
     }
     cipherText = cipherArr.join('');
-    document.getElementById('cipherOutput').innerHTML = cipherText;
-    setTimeout( () => {document.querySelector('#cipherOutput').innerHTML = ''}, 15000);
+    cipherOutput.innerHTML = cipherText;
+    setTimeout( () => {cipherOutput.innerHTML = ''}, 15000);
     clearInput();
 }
 
 // Runs decipher
 function decipher() {
-    const cipheredText = document.getElementById('decipherText').value;
+    const cipheredText = decipherTextBox.value;
     let decipherArr = [];
 
     for (i = 0; i < cipheredText.length; i++) {
@@ -92,8 +92,8 @@ function decipher() {
         }
     }
     decipherText = decipherArr.join('');
-    document.getElementById('decipherOutput').innerHTML = decipherText;
-    setTimeout( () => {document.querySelector('#decipherOutput').innerHTML = ''}, 15000);
+    decipherOutput.innerHTML = decipherText;
+    setTimeout( () => {decipherOutput.innerHTML = ''}, 15000);
     clearInput();
 }
 
