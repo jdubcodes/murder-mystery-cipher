@@ -4,7 +4,6 @@
 - [Project Description](#project-description)
 - [Tech Used](#tech-used)
 - [Features](#features)
-- [Credits](#credits)
 - [Connect with me](#connect-with-me)
 
 ## Project Description
