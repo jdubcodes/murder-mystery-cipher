@@ -9,7 +9,7 @@
 ## Project Description
 - The idea:
     - I was doing a murder mystery at home one evening that required the use of a Ceasar cipher to complete the game.
-    - Since this was a lot of work to do it by hand, it gave me the idea to program one.
+    - Since this was a lot of work to do it by hand, it gave me the idea to make a program that could do it for me.
 
 - The cipher codes each message by going forwards by 1 then backwards by 9 on every other letter.
 
