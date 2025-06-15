@@ -8,9 +8,8 @@
 
 ## Project Description
 - The idea:
-    - My girlfriend and I were doing a murder mystery at home one evening that required us to use a Ceasar cipher to complete the game.
-    - We started talking about how it would be cool if we could write secret messages to one another.
-    - Since this was a lot of work to do it by hand, it gave me the idea to program one using numbers that were meaningful to us.
+    - I was doing a murder mystery at home one evening that required the use of a Ceasar cipher to complete the game.
+    - Since this was a lot of work to do it by hand, it gave me the idea to program one.
 
 - The cipher codes each message by going forwards by 1 then backwards by 9 on every other letter.
 
